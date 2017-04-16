@@ -40,10 +40,10 @@ def print_info ( stock_data , stock_idx , version) :
 					endDate_real = day_quote["Date"];
 					stock_list[stock_idx][3] = day_quote["Close"];
 			#lowest
-			if stock_list[stock_idx][4] > day_quote["Low"] or stock_list[stock_idx][4] == 0 :
+			if float(stock_list[stock_idx][4]) > float(day_quote["Low"]) or stock_list[stock_idx][4] == 0 :
 				stock_list[stock_idx][4] = day_quote["Low"];
 			#highest
-			if stock_list[stock_idx][5] < day_quote["High"] :
+			if float(stock_list[stock_idx][5]) < float(day_quote["High"]) :
 				stock_list[stock_idx][5] = day_quote["High"];
 
 			nLoop += 1;
@@ -99,14 +99,32 @@ def get_hsi_info():
 	except :
 		if debug : print "error in get_hsi_info";
 
+def get_stock_list():
+	global stock_list;
+	#print "stock_no\tvalue\t\tbuy\tclose\tlowest\thighest";
+	print '{: <10}'.format("stock_no") , '{: ^10}'.format("value") ,
+	print '{: ^10}'.format("buy") , '{: ^10}'.format("close") ,
+	print '{: ^10}'.format("lowest") , '{: ^10}'.format("highest");
+	for nCount in reversed( sorted( stock_list , key = lambda x:( x[1]) ) ) :
+		for index , nItem in enumerate(nCount) :
+			if index == 1 :
+				print '{: <10}'.format('{:8.2f}'.format(nItem)) ,
+			elif index != 0 :
+				print '{: <10}'.format('{:8.2f}'.format(float(nItem))) ,
+			else :
+				print '{: <10}'.format(nItem) ,
+		print ;
+
+
 
 
 init_money_total = 0.0;
 init_money_single = 10000.0;
-version = 0 ; #version  0 =  only one init money ; 1 = add money every count
+version = 1 ; #version  0 =  only one init money ; 1 = add money every count
 startDate_real = 0;
 
 #stock_no , init_money , buy_in_price , close_price ,lowest , highest
+
 stock_list = [ 	["0001.hk" , init_money_single , 0 , 0  , 0 , 0],  
 				["0005.hk" , init_money_single , 0 , 0  , 0 , 0],
 				["0700.hk" , init_money_single , 0 , 0  , 0 , 0],
@@ -120,23 +138,69 @@ stock_list = [ 	["0001.hk" , init_money_single , 0 , 0  , 0 , 0],
 				["0388.hk" , init_money_single , 0 , 0  , 0 , 0],
 				["0806.hk" , init_money_single , 0 , 0  , 0 , 0],
 			] ;
+'''
+#hkconsumer's stock_list , 
+#credit from http://hkconsumer.blogspot.hk/search/label/%E4%BA%94%E5%8D%81%E8%90%AC%E5%AF%A6%E6%88%B0%E5%80%89
+stock_list_hkconsumer = [
+			 	["2018.hk" , init_money_single , 0 , 0  , 0 , 0],  
+				["0823.hk" , init_money_single , 0 , 0  , 0 , 0],
+				["0011.hk" , init_money_single , 0 , 0  , 0 , 0],
+				["0939.hk" , init_money_single , 0 , 0  , 0 , 0],
+				["0388.hk" , init_money_single , 0 , 0  , 0 , 0],
+			] ;
+
+#visimon's stock_list ,
+#credit from http://visimon.blogspot.hk/search/label/%E5%83%B9%E5%80%BC%E6%8A%95%E8%B3%87%E5%80%89
+stock_list_visimon = [
+			 	["0016.hk" , init_money_single , 0 , 0  , 0 , 0],  
+				["1398.hk" , init_money_single , 0 , 0  , 0 , 0],
+				["1044.hk" , init_money_single , 0 , 0  , 0 , 0],
+				["0857.hk" , init_money_single , 0 , 0  , 0 , 0],
+				["0083.hk" , init_money_single , 0 , 0  , 0 , 0],
+				["0005.hk" , init_money_single , 0 , 0  , 0 , 0],
+				["0001.hk" , init_money_single , 0 , 0  , 0 , 0],
+				["3988.hk" , init_money_single , 0 , 0  , 0 , 0],
+				["2128.hk" , init_money_single , 0 , 0  , 0 , 0],
+			] ;
+ 
+#stock_list = stock_list_visimon[:] ;
+'''
 
 #startDate , endDate			
 date_list = [
-#			 ['2010-01-01' , '2010-07-01' ] , 
-#			 ['2010-07-01' , '2011-01-01' ] ,
-#			 ['2011-01-01' , '2011-07-01' ] , 
-#			 ['2011-07-01' , '2012-01-01' ] ,
-#			 ['2012-01-01' , '2012-07-01' ] , 
-#			 ['2012-07-01' , '2013-01-01' ] ,
-#			 ['2013-01-01' , '2013-07-01' ] , 
-#			 ['2013-07-01' , '2014-01-01' ] ,
-#			 ['2014-01-01' , '2014-07-01' ] , 
-#			 ['2014-07-01' , '2015-01-01' ] ,
-#			 ['2015-01-01' , '2015-07-01' ] , 
-#			 ['2015-07-01' , '2016-01-01' ] ,
-#			 ['2016-01-01' , '2016-07-01' ] , 
-#			 ['2016-07-01' , '2017-01-01' ] ,
+
+#			 ['2007-01-01' , '2007-07-01' ] , 
+#			 ['2007-07-01' , '2008-01-01' ] ,
+
+			 ['2007-11-01' , '2008-01-01' ] , # highest of 2007
+
+			 ['2008-01-01' , '2008-07-01' ] , 
+			 ['2008-07-01' , '2009-01-01' ] ,
+
+#			 ['2008-10-27' , '2009-01-01' ] , #lowest of 2018
+
+			 ['2009-01-01' , '2009-07-01' ] , 
+			 ['2009-07-01' , '2010-01-01' ] ,
+			 ['2010-01-01' , '2010-07-01' ] , 
+			 ['2010-07-01' , '2011-01-01' ] ,
+			 ['2011-01-01' , '2011-07-01' ] , 
+			 ['2011-07-01' , '2012-01-01' ] ,
+			 ['2012-01-01' , '2012-07-01' ] , 
+			 ['2012-07-01' , '2013-01-01' ] ,
+			 ['2013-01-01' , '2013-07-01' ] , 
+			 ['2013-07-01' , '2014-01-01' ] ,
+			 ['2014-01-01' , '2014-07-01' ] , 
+			 ['2014-07-01' , '2015-01-01' ] ,
+			 ['2015-01-01' , '2015-07-01' ] ,
+
+#			 ['2015-04-27' , '2015-07-01' ] , # highest of 2015
+
+			 ['2015-07-01' , '2016-01-01' ] ,
+			 ['2016-01-01' , '2016-07-01' ] ,
+
+#			 ['2016-02-12' , '2016-07-01' ] , #lowest of 2016 
+
+			 ['2016-07-01' , '2017-01-01' ] ,
 			 ['2017-01-01' , '2017-07-01' ] ,
 ];
 
@@ -156,15 +220,7 @@ for indexDate , date in enumerate(date_list) :
 
 	print "=====From===== : " , startDate  , " to " , endDate_real ;
 	print "HSI Close: " , get_hsi_info();
-	if debug == 0 : 
-		#print "stock_no\tvalue\t\tbuy\tclose\tlowest\thighest";
-		print '{: <10}'.format("stock_no") , '{: <10}'.format("value") ,
-		print '{: <10}'.format("buy") , '{: <10}'.format("close") ,
-		print '{: <10}'.format("lowest") , '{: <10}'.format("highest");
-		for nCount in reversed( sorted( stock_list , key = lambda x:( x[1]) ) ) :
-			for nItem in nCount :
-				print '{: <10}'.format(nItem) ,
-			print ;
+	get_stock_list()
 
 	if version == 1 :
 		nLenCount = indexDate+1
@@ -179,6 +235,7 @@ for indexDate , date in enumerate(date_list) :
 #	print "==========";
 	time.sleep(0.5);
 
+#get_stock_list();
 print "=====From===== : " , startDate_real  , " to " , endDate_real  , " version : " , version;
 print "Pincipal :  " , init_money_single * stock_len * nLenCount ;
 print "Final Money : " , init_money_total ;
