@@ -4,7 +4,7 @@ global init_money , final_money
 global startDate , endDate , endDate_real
 global stock_list , stock_len
 global debug
-debug = 1
+debug = 0
 
 #get stock data from yahoo
 def get_stock_info( stock_name ) :
@@ -39,7 +39,12 @@ def print_info ( stock_data , stock_idx , version) :
 					Price_End = day_quote["Close"];
 					endDate_real = day_quote["Date"];
 					stock_list[stock_idx][3] = day_quote["Close"];
-
+			#lowest
+			if stock_list[stock_idx][4] > day_quote["Low"] or stock_list[stock_idx][4] == 0 :
+				stock_list[stock_idx][4] = day_quote["Low"];
+			#highest
+			if stock_list[stock_idx][5] < day_quote["High"] :
+				stock_list[stock_idx][5] = day_quote["High"];
 
 			nLoop += 1;
 		change_percent  = round(((float(Price_End) - float(Price_start)) / float(Price_start))  ,4)
@@ -101,18 +106,19 @@ init_money_single = 10000.0;
 version = 0 ; #version  0 =  only one init money ; 1 = add money every count
 startDate_real = 0;
 
-#stock_no , init_money , buy_in_price , close_price
-stock_list = [ 	["0001.hk" , init_money_single , 0 , 0  ],  
-				["0005.hk" , init_money_single , 0 , 0  ],
-				["0700.hk" , init_money_single , 0 , 0  ],
-				["3888.hk" , init_money_single , 0 , 0  ],
-				["0823.hk" , init_money_single , 0 , 0  ],
-				["2208.hk" , init_money_single , 0 , 0  ],
-				["1211.hk" , init_money_single , 0 , 0  ],
-				["0268.hk" , init_money_single , 0 , 0  ],
-				["1766.hk" , init_money_single , 0 , 0  ],
-				["2800.hk" , init_money_single , 0 , 0  ],
-				["0388.hk" , init_money_single , 0 , 0  ] 
+#stock_no , init_money , buy_in_price , close_price ,lowest , highest
+stock_list = [ 	["0001.hk" , init_money_single , 0 , 0  , 0 , 0],  
+				["0005.hk" , init_money_single , 0 , 0  , 0 , 0],
+				["0700.hk" , init_money_single , 0 , 0  , 0 , 0],
+				["3888.hk" , init_money_single , 0 , 0  , 0 , 0],
+				["0823.hk" , init_money_single , 0 , 0  , 0 , 0],
+				["2208.hk" , init_money_single , 0 , 0  , 0 , 0],
+				["1211.hk" , init_money_single , 0 , 0  , 0 , 0],
+				["0268.hk" , init_money_single , 0 , 0  , 0 , 0],
+				["1766.hk" , init_money_single , 0 , 0  , 0 , 0],
+				["2800.hk" , init_money_single , 0 , 0  , 0 , 0],
+				["0388.hk" , init_money_single , 0 , 0  , 0 , 0],
+				["0806.hk" , init_money_single , 0 , 0  , 0 , 0],
 			] ;
 
 #startDate , endDate			
@@ -121,16 +127,16 @@ date_list = [
 #			 ['2010-07-01' , '2011-01-01' ] ,
 #			 ['2011-01-01' , '2011-07-01' ] , 
 #			 ['2011-07-01' , '2012-01-01' ] ,
-			 ['2012-01-01' , '2012-07-01' ] , 
-			 ['2012-07-01' , '2013-01-01' ] ,
-			 ['2013-01-01' , '2013-07-01' ] , 
-			 ['2013-07-01' , '2014-01-01' ] ,
-			 ['2014-01-01' , '2014-07-01' ] , 
-			 ['2014-07-01' , '2015-01-01' ] ,
-			 ['2015-01-01' , '2015-07-01' ] , 
-			 ['2015-07-01' , '2016-01-01' ] ,
-			 ['2016-01-01' , '2016-07-01' ] , 
-			 ['2016-07-01' , '2017-01-01' ] ,
+#			 ['2012-01-01' , '2012-07-01' ] , 
+#			 ['2012-07-01' , '2013-01-01' ] ,
+#			 ['2013-01-01' , '2013-07-01' ] , 
+#			 ['2013-07-01' , '2014-01-01' ] ,
+#			 ['2014-01-01' , '2014-07-01' ] , 
+#			 ['2014-07-01' , '2015-01-01' ] ,
+#			 ['2015-01-01' , '2015-07-01' ] , 
+#			 ['2015-07-01' , '2016-01-01' ] ,
+#			 ['2016-01-01' , '2016-07-01' ] , 
+#			 ['2016-07-01' , '2017-01-01' ] ,
 			 ['2017-01-01' , '2017-07-01' ] ,
 ];
 
@@ -150,9 +156,15 @@ for indexDate , date in enumerate(date_list) :
 
 	print "=====From===== : " , startDate  , " to " , endDate_real ;
 	print "HSI Close: " , get_hsi_info();
-	if debug : 
-		for nCount in stock_list :
-			print nCount;
+	if debug == 0 : 
+		#print "stock_no\tvalue\t\tbuy\tclose\tlowest\thighest";
+		print '{: <10}'.format("stock_no") , '{: <10}'.format("value") ,
+		print '{: <10}'.format("buy") , '{: <10}'.format("close") ,
+		print '{: <10}'.format("lowest") , '{: <10}'.format("highest");
+		for nCount in reversed( sorted( stock_list , key = lambda x:( x[1]) ) ) :
+			for nItem in nCount :
+				print '{: <10}'.format(nItem) ,
+			print ;
 
 	if version == 1 :
 		nLenCount = indexDate+1
@@ -167,7 +179,7 @@ for indexDate , date in enumerate(date_list) :
 #	print "==========";
 	time.sleep(0.5);
 
-print "=====From===== : " , startDate_real  , " to " , endDate_real ;
+print "=====From===== : " , startDate_real  , " to " , endDate_real  , " version : " , version;
 print "Pincipal :  " , init_money_single * stock_len * nLenCount ;
 print "Final Money : " , init_money_total ;
 
