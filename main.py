@@ -4,7 +4,7 @@ global init_money , final_money
 global startDate , endDate , endDate_real
 global stock_list , stock_len
 global debug
-debug = 0
+debug = 1
 
 #get stock data from yahoo
 def get_stock_info( stock_name ) :
@@ -98,12 +98,12 @@ def get_hsi_info():
 
 init_money_total = 0.0;
 init_money_single = 10000.0;
-version = 1 ; #version  0 =  only one init money ; 1 = add money every count
-
+version = 0 ; #version  0 =  only one init money ; 1 = add money every count
+startDate_real = 0;
 
 #stock_no , init_money , buy_in_price , close_price
-stock_list = [ 	["0001.hk" , init_money_single , 0 , 0 ],  
-				["0005.hk" , init_money_single , 0 , 0 ],
+stock_list = [ 	["0001.hk" , init_money_single , 0 , 0  ],  
+				["0005.hk" , init_money_single , 0 , 0  ],
 				["0700.hk" , init_money_single , 0 , 0  ],
 				["3888.hk" , init_money_single , 0 , 0  ],
 				["0823.hk" , init_money_single , 0 , 0  ],
@@ -136,6 +136,7 @@ date_list = [
 
 for indexDate , date in enumerate(date_list) :
 	startDate = date[0];
+	if startDate_real == 0 : startDate_real = startDate;
 	endDate = date[1];
 	endDate_real = endDate;
 	stock_len = len(stock_list);
@@ -149,7 +150,7 @@ for indexDate , date in enumerate(date_list) :
 
 	print "=====From===== : " , startDate  , " to " , endDate_real ;
 	print "HSI Close: " , get_hsi_info();
-	if debug == 0 : 
+	if debug : 
 		for nCount in stock_list :
 			print nCount;
 
@@ -166,7 +167,9 @@ for indexDate , date in enumerate(date_list) :
 #	print "==========";
 	time.sleep(0.5);
 
-#print "Final Money : " , init_money_total ;
+print "=====From===== : " , startDate_real  , " to " , endDate_real ;
+print "Pincipal :  " , init_money_single * stock_len * nLenCount ;
+print "Final Money : " , init_money_total ;
 
 
 
