@@ -17,7 +17,7 @@ def get_stock_info( stock_name ) :
 	return data;
 
 #print info of data
-def print_info ( stock_data) :
+def print_info ( stock_data ) :
 	print data["query"]["results"]["quote"][0]["Symbol"];
 	global endDate_real;
 	nLoop = 0
