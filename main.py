@@ -1,7 +1,7 @@
 import urllib, json , time
 
 global init_money , final_money
-global startDate , endDate  , endDate_real
+global startDate , endDate , endDate_real
 global stock_list , stock_len
 global debug
 debug = 0
@@ -30,9 +30,17 @@ def print_info ( stock_data , stock_idx ) :
 
 				if nLoop == 0 :
 					Price_start = day_quote["Close"];
+
+					#set buy_in_price
+					if stock_list[stock_idx][2] == 0 :
+						stock_list[stock_idx][2] = day_quote["Close"];
+
 				elif nLoop == len(data["query"]["results"]["quote"]) - 1 :
 					Price_End = day_quote["Close"];
 					endDate_real = day_quote["Date"];
+					stock_list[stock_idx][3] = day_quote["Close"];
+
+
 			nLoop += 1;
 		change_percent  = round(((float(Price_End) - float(Price_start)) / float(Price_start))  ,4)
 		if debug : print change_percent;
@@ -58,46 +66,66 @@ def calc_init_money_total( change_percent , stock_idx):
 	if debug : print "Final money of this stock : " , stock_list[stock_idx][1] ;
 	if debug : print "Final money of total : " , init_money_total;
 
+#get hsi info
+def get_hsi_info():
+	global startDate , endDate;
+	stock_name = "^HSI";
+	url = "http://query.yahooapis.com/v1/public/yql?format=json&env=store://datatables.org/alltableswithkeys&q=select * from yahoo.finance.historicaldata where symbol = '" + stock_name + "' and startDate = '" + startDate + "' and endDate = '" + endDate + "'";
+	response = urllib.urlopen(url)
+	data = json.loads(response.read())
+	try :
+		if debug : 
+			print data["query"]["results"]["quote"][0]["Symbol"]
+		if debug : 
+			print data["query"]["results"]["quote"][0]["Close"]
+		return data["query"]["results"]["quote"][0]["Close"];
+	except :
+		if debug : print "error in get_hsi_info";
+
+
 
 init_money_total = 0.0;
 init_money_single = 10000.0;
 
-stock_list = [ 	["0001.hk" , init_money_single ],  
-				["0005.hk" , init_money_single ],
-				["0700.hk" , init_money_single ],
-				["3888.hk" , init_money_single ],
-				["0823.hk" , init_money_single ],
-				["2208.hk" , init_money_single ],
-				["1211.hk" , init_money_single ],
-				["0268.hk" , init_money_single ],
-				["1766.hk" , init_money_single ],
-				["2800.hk" , init_money_single ],
-				["0388.hk" , init_money_single ] 
+#stock_no , init_money , buy_in_price , close_price
+stock_list = [ 	["0001.hk" , init_money_single , 0 , 0 ],  
+				["0005.hk" , init_money_single , 0 , 0 ],
+				["0700.hk" , init_money_single , 0 , 0  ],
+				["3888.hk" , init_money_single , 0 , 0  ],
+				["0823.hk" , init_money_single , 0 , 0  ],
+				["2208.hk" , init_money_single , 0 , 0  ],
+				["1211.hk" , init_money_single , 0 , 0  ],
+				["0268.hk" , init_money_single , 0 , 0  ],
+				["1766.hk" , init_money_single , 0 , 0  ],
+				["2800.hk" , init_money_single , 0 , 0  ],
+				["0388.hk" , init_money_single , 0 , 0  ] 
 			] ;
 
 #startDate , endDate			
-date_list = [#['2010-01-01' , '2010-07-01' ] , 
-			 #['2010-07-01' , '2011-01-01' ] ,
-			 #['2011-01-01' , '2011-07-01' ] , 
-			 #['2011-07-01' , '2012-01-01' ] ,
-			 #['2012-01-01' , '2012-07-01' ] , 
-			 #['2012-07-01' , '2013-01-01' ] ,
-			 #['2013-01-01' , '2013-07-01' ] , 
+date_list = [
+#			 ['2010-01-01' , '2010-07-01' ] , 
+#			 ['2010-07-01' , '2011-01-01' ] ,
+#			 ['2011-01-01' , '2011-07-01' ] , 
+#			 ['2011-07-01' , '2012-01-01' ] ,
+#			 ['2012-01-01' , '2012-07-01' ] , 
+#			 ['2012-07-01' , '2013-01-01' ] ,
+			 ['2013-01-01' , '2013-07-01' ] , 
 			 ['2013-07-01' , '2014-01-01' ] ,
 			 ['2014-01-01' , '2014-07-01' ] , 
 			 ['2014-07-01' , '2015-01-01' ] ,
 			 ['2015-01-01' , '2015-07-01' ] , 
 			 ['2015-07-01' , '2016-01-01' ] ,
 			 ['2016-01-01' , '2016-07-01' ] , 
-#			 ['2016-07-01' , '2017-01-01' ] ,
-#			 ['2017-01-01' , '2017-07-01' ] ,
-]
+			 ['2016-07-01' , '2017-01-01' ] ,
+			 ['2017-01-01' , '2017-07-01' ] ,
+];
 
 for date in date_list:
 	startDate = date[0];
 	endDate = date[1];
 	endDate_real = endDate;
 	stock_len = len(stock_list);
+
 	for index , stock in enumerate(stock_list) :
 		if debug : print index , stock;
 		data = get_stock_info( stock[0] );
@@ -106,12 +134,12 @@ for date in date_list:
 	if debug : print ;
 
 	print "From : " , startDate  , " to " , endDate_real ;
-
+	print "HSI Close: " , get_hsi_info();
 	if debug : 
 		for nCount in stock_list :
 			print nCount;
 
-#	print "Final Money : " , init_money_total ;
+	print "Final Money : " , init_money_total ;
 #	print "Profit Money : " , init_money_total - init_money_single * stock_len  ;
 #	print "Profit Percent : " , round( init_money_total / (init_money_single * stock_len)  , 4) - 1;
 #	print "==========";
