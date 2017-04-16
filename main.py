@@ -15,7 +15,7 @@ def get_stock_info( stock_name ) :
 	return data;
 
 #print info of data
-def print_info ( stock_data , stock_idx ) :
+def print_info ( stock_data , stock_idx , version) :
 	global endDate_real ;
 	nLoop = 0
 	Price_start = 0
@@ -47,22 +47,34 @@ def print_info ( stock_data , stock_idx ) :
 		if debug : print Price_start , Price_End 
 		if debug : print float(Price_End) - float(Price_start) ,"%4s%%"  % float(change_percent*100);
 
-		calc_init_money_total( change_percent , stock_idx );
+		calc_init_money_total( change_percent , stock_idx , version);
 
 	except: 
 		global stock_len;
 		stock_len = stock_len - 1;
 		if debug : print "stock_len - 1 : " , stock_len ,
 
-def calc_init_money_total( change_percent , stock_idx):
+#version  1 = add money every count
+# 0 =  only one init money
+def calc_init_money_total( change_percent , stock_idx , version):
 
-	global init_money_total  , stock_list
-	stock_list[stock_idx][1] = stock_list[stock_idx][1] * (1 + change_percent);
-	#clear init_money_total to 0 after time loop
-	if stock_idx == 0 :
-		init_money_total = 0 ;
+	global init_money_total  , stock_list , init_money_single
+	if version == 0 :
+		stock_list[stock_idx][1] = stock_list[stock_idx][1] * (1 + change_percent);
+		#clear init_money_total to 0 after time loop
+		if stock_idx == 0  :
+			init_money_total = 0 ;
+		init_money_total = init_money_total + stock_list[stock_idx][1]
 
-	init_money_total = init_money_total + stock_list[stock_idx][1]
+	elif version == 1 :
+		
+		if stock_list[stock_idx][1] != init_money_single :
+			init_money_total -= stock_list[stock_idx][1]
+			stock_list[stock_idx][1] = (stock_list[stock_idx][1] + init_money_single) * (1 + change_percent);
+		else : #first loop
+			stock_list[stock_idx][1] = stock_list[stock_idx][1]  * (1 + change_percent);
+		init_money_total += stock_list[stock_idx][1]
+	
 	if debug : print "Final money of this stock : " , stock_list[stock_idx][1] ;
 	if debug : print "Final money of total : " , init_money_total;
 
@@ -86,6 +98,8 @@ def get_hsi_info():
 
 init_money_total = 0.0;
 init_money_single = 10000.0;
+version = 1 ; #version  0 =  only one init money ; 1 = add money every count
+
 
 #stock_no , init_money , buy_in_price , close_price
 stock_list = [ 	["0001.hk" , init_money_single , 0 , 0 ],  
@@ -107,8 +121,8 @@ date_list = [
 #			 ['2010-07-01' , '2011-01-01' ] ,
 #			 ['2011-01-01' , '2011-07-01' ] , 
 #			 ['2011-07-01' , '2012-01-01' ] ,
-#			 ['2012-01-01' , '2012-07-01' ] , 
-#			 ['2012-07-01' , '2013-01-01' ] ,
+			 ['2012-01-01' , '2012-07-01' ] , 
+			 ['2012-07-01' , '2013-01-01' ] ,
 			 ['2013-01-01' , '2013-07-01' ] , 
 			 ['2013-07-01' , '2014-01-01' ] ,
 			 ['2014-01-01' , '2014-07-01' ] , 
@@ -120,7 +134,7 @@ date_list = [
 			 ['2017-01-01' , '2017-07-01' ] ,
 ];
 
-for date in date_list:
+for indexDate , date in enumerate(date_list) :
 	startDate = date[0];
 	endDate = date[1];
 	endDate_real = endDate;
@@ -129,23 +143,30 @@ for date in date_list:
 	for index , stock in enumerate(stock_list) :
 		if debug : print index , stock;
 		data = get_stock_info( stock[0] );
-		print_info( data , index );
+		print_info( data , index ,version);
 		if debug : print "=====",
 	if debug : print ;
 
-	print "From : " , startDate  , " to " , endDate_real ;
+	print "=====From===== : " , startDate  , " to " , endDate_real ;
 	print "HSI Close: " , get_hsi_info();
-	if debug : 
+	if debug == 0 : 
 		for nCount in stock_list :
 			print nCount;
 
+	if version == 1 :
+		nLenCount = indexDate+1
+	else :
+		nLenCount = 1;
+
+
 	print "Final Money : " , init_money_total ;
-#	print "Profit Money : " , init_money_total - init_money_single * stock_len  ;
-#	print "Profit Percent : " , round( init_money_total / (init_money_single * stock_len)  , 4) - 1;
+	print "Profit Money : " , init_money_total - init_money_single * stock_len * nLenCount ;
+	print "Profit Percent : " , \
+		round( init_money_total / (init_money_single * stock_len * nLenCount )  , 4) - 1 ;
 #	print "==========";
 	time.sleep(0.5);
 
-print "Final Money : " , init_money_total ;
+#print "Final Money : " , init_money_total ;
 
 
 
