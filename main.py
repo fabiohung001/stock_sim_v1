@@ -21,7 +21,8 @@ def print_info ( stock_data , stock_idx , version) :
 	Price_start = 0
 	Price_End = 0
 	try :
-		if debug : print data["query"]["results"]["quote"][0]["Symbol"] , 
+		if debug : print data["query"]["results"]["quote"][0]["Symbol"] ,
+		#if debug : print data["query"]["results"]["quote"];
 		for day_quote in reversed(data["query"]["results"]["quote"]) :
 			if nLoop == 0 or nLoop == len(data["query"]["results"]["quote"]) - 1 :
 				if debug :
@@ -29,11 +30,13 @@ def print_info ( stock_data , stock_idx , version) :
 					print "Close : " , day_quote["Close"];
 
 				if nLoop == 0 :
-					Price_start = day_quote["Close"];
-
+#					Price_start = day_quote["Close"];
 					#set buy_in_price
 					if stock_list[stock_idx][2] == 0 :
 						stock_list[stock_idx][2] = day_quote["Close"];
+						Price_start = stock_list[stock_idx][2];
+					else :
+						Price_start = stock_list[stock_idx][3];
 
 				elif nLoop == len(data["query"]["results"]["quote"]) - 1 :
 					Price_End = day_quote["Close"];
@@ -120,12 +123,13 @@ def get_stock_list():
 
 init_money_total = 0.0;
 init_money_single = 10000.0;
-version = 1 ; #version  0 =  only one init money ; 1 = add money every count
+version = 0 ; #version  0 =  only one init money ; 1 = add money every count
 startDate_real = 0;
 
 #stock_no , init_money , buy_in_price , close_price ,lowest , highest
 
-stock_list = [ 	["0001.hk" , init_money_single , 0 , 0  , 0 , 0],  
+stock_list = [ 	
+				["0001.hk" , init_money_single , 0 , 0  , 0 , 0],  
 				["0005.hk" , init_money_single , 0 , 0  , 0 , 0],
 				["0700.hk" , init_money_single , 0 , 0  , 0 , 0],
 				["3888.hk" , init_money_single , 0 , 0  , 0 , 0],
@@ -163,6 +167,10 @@ stock_list_visimon = [
 				["2128.hk" , init_money_single , 0 , 0  , 0 , 0],
 			] ;
  
+#purposelife42583's stock_list ,
+#credit from http://purposelife42583.blogspot.hk/search/label/%E8%B6%B3%E7%90%83%E9%99%A3%E5%AE%B9%E6%8A%95%E8%B3%87%E6%B3%95
+#todo
+
 #stock_list = stock_list_visimon[:] ;
 '''
 
@@ -171,35 +179,35 @@ date_list = [
 
 #			 ['2007-01-01' , '2007-07-01' ] , 
 #			 ['2007-07-01' , '2008-01-01' ] ,
-
-			 ['2007-11-01' , '2008-01-01' ] , # highest of 2007
-
-			 ['2008-01-01' , '2008-07-01' ] , 
-			 ['2008-07-01' , '2009-01-01' ] ,
-
+#
+#			 ['2007-11-01' , '2008-01-01' ] , # highest of 2007
+#
+#			 ['2008-01-01' , '2008-07-01' ] , 
+#			 ['2008-07-01' , '2009-01-01' ] ,
+#
 #			 ['2008-10-27' , '2009-01-01' ] , #lowest of 2018
-
-			 ['2009-01-01' , '2009-07-01' ] , 
-			 ['2009-07-01' , '2010-01-01' ] ,
-			 ['2010-01-01' , '2010-07-01' ] , 
-			 ['2010-07-01' , '2011-01-01' ] ,
-			 ['2011-01-01' , '2011-07-01' ] , 
-			 ['2011-07-01' , '2012-01-01' ] ,
-			 ['2012-01-01' , '2012-07-01' ] , 
-			 ['2012-07-01' , '2013-01-01' ] ,
-			 ['2013-01-01' , '2013-07-01' ] , 
-			 ['2013-07-01' , '2014-01-01' ] ,
-			 ['2014-01-01' , '2014-07-01' ] , 
-			 ['2014-07-01' , '2015-01-01' ] ,
-			 ['2015-01-01' , '2015-07-01' ] ,
-
-#			 ['2015-04-27' , '2015-07-01' ] , # highest of 2015
-
+#
+#			 ['2009-01-01' , '2009-07-01' ] , 
+#			 ['2009-07-01' , '2010-01-01' ] ,
+#			 ['2010-01-01' , '2010-07-01' ] , 
+#			 ['2010-07-01' , '2011-01-01' ] ,
+#			 ['2011-01-01' , '2011-07-01' ] , 
+#			 ['2011-07-01' , '2012-01-01' ] ,
+#			 ['2012-01-01' , '2012-07-01' ] , 
+#			 ['2012-07-01' , '2013-01-01' ] ,
+#			 ['2013-01-01' , '2013-07-01' ] , 
+#			 ['2013-07-01' , '2014-01-01' ] ,
+#			 ['2014-01-01' , '2014-07-01' ] , 
+#			 ['2014-07-01' , '2015-01-01' ] ,
+#			 ['2015-01-01' , '2015-07-01' ] ,
+#
+			 ['2015-04-27' , '2015-07-01' ] , # highest of 2015
+#
 			 ['2015-07-01' , '2016-01-01' ] ,
 			 ['2016-01-01' , '2016-07-01' ] ,
-
+#
 #			 ['2016-02-12' , '2016-07-01' ] , #lowest of 2016 
-
+#
 			 ['2016-07-01' , '2017-01-01' ] ,
 			 ['2017-01-01' , '2017-07-01' ] ,
 ];

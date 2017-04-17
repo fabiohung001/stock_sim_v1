@@ -1,0 +1,404 @@
+0 ['0806.hk', 10000.0, 0, 0, 0, 0]
+0806.hk Date :  2007-11-22
+Close :  7.63
+Set buy in Pirce
+Date :  2007-12-31
+Close :  7.88
+0.0328
+7.63 7.88
+0.25 3.28%
+Final money of this stock :  10328.0
+Final money of total :  10328.0
+=====
+=====From===== :  2007-11-01  to  2007-12-31
+HSI Close:  %5eHSI
+27812.650391
+27812.650391
+stock_no     value       buy       close      lowest    highest  
+0806.hk    10328.00       7.63       7.88       6.51       8.75  
+Final Money :  10328.0
+Profit Money :  328.0
+Profit Percent :  0.0328
+0 ['0806.hk', 10328.0, u'7.63', u'7.88', u'6.51', u'8.75']
+0806.hk Date :  2008-01-02
+Close :  7.74
+Date :  2008-06-30
+Close :  6.70
+-0.1344
+7.74 6.70
+-1.04 -13.44%
+Final money of this stock :  8939.9168
+Final money of total :  8939.9168
+=====
+=====From===== :  2008-01-01  to  2008-06-30
+HSI Close:  %5eHSI
+22102.009766
+22102.009766
+stock_no     value       buy       close      lowest    highest  
+0806.hk     8939.92       7.63       6.70       4.38       8.75  
+Final Money :  8939.9168
+Profit Money :  -1060.0832
+Profit Percent :  -0.106
+0 ['0806.hk', 8939.9168, u'7.63', u'6.70', u'4.38', u'8.75']
+0806.hk Date :  2008-07-02
+Close :  6.50
+Date :  2009-01-01
+Close :  2.48
+-0.6185
+6.50 2.48
+-4.02 -61.85%
+Final money of this stock :  3410.5782592
+Final money of total :  3410.5782592
+=====
+=====From===== :  2008-07-01  to  2009-01-01
+HSI Close:  %5eHSI
+14387.480469
+14387.480469
+stock_no     value       buy       close      lowest    highest  
+0806.hk     3410.58       7.63       2.48       1.38       8.75  
+Final Money :  3410.5782592
+Profit Money :  -6589.4217408
+Profit Percent :  -0.6589
+0 ['0806.hk', 3410.5782592, u'7.63', u'2.48', u'1.38', u'8.75']
+0806.hk Date :  2009-01-01
+Close :  2.48
+Date :  2009-07-01
+Close :  3.37
+0.3589
+2.48 3.37
+0.89 35.89%
+Final money of this stock :  4634.63479643
+Final money of total :  4634.63479643
+=====
+=====From===== :  2009-01-01  to  2009-07-01
+HSI Close:  %5eHSI
+18378.730469
+18378.730469
+stock_no     value       buy       close      lowest    highest  
+0806.hk     4634.63       7.63       3.37       1.38       8.75  
+Final Money :  4634.63479643
+Profit Money :  -5365.36520357
+Profit Percent :  -0.5365
+0 ['0806.hk', 4634.63479642688, u'7.63', u'3.37', u'1.38', u'8.75']
+0806.hk Date :  2009-07-01
+Close :  3.37
+Date :  2010-01-01
+Close :  3.97
+0.178
+3.37 3.97
+0.6 17.8%
+Final money of this stock :  5459.59979019
+Final money of total :  5459.59979019
+=====
+=====From===== :  2009-07-01  to  2010-01-01
+HSI Close:  %5eHSI
+21872.50
+21872.50
+stock_no     value       buy       close      lowest    highest  
+0806.hk     5459.60       7.63       3.97       1.38       8.75  
+Final Money :  5459.59979019
+Profit Money :  -4540.40020981
+Profit Percent :  -0.454
+0 ['0806.hk', 5459.599790190864, u'7.63', u'3.97', u'1.38', u'8.75']
+0806.hk Date :  2010-01-01
+Close :  3.97
+Date :  2010-06-30
+Close :  4.85
+0.2217
+3.97 4.85
+0.88 22.17%
+Final money of this stock :  6669.99306368
+Final money of total :  6669.99306368
+=====
+=====From===== :  2010-01-01  to  2010-06-30
+HSI Close:  %5eHSI
+20128.990234
+20128.990234
+stock_no     value       buy       close      lowest    highest  
+0806.hk     6669.99       7.63       4.85       1.38       8.75  
+Final Money :  6669.99306368
+Profit Money :  -3330.00693632
+Profit Percent :  -0.333
+0 ['0806.hk', 6669.993063676178, u'7.63', u'4.85', u'1.38', u'8.75']
+0806.hk Date :  2010-07-02
+Close :  4.73
+Date :  2010-12-31
+Close :  7.80
+0.649
+4.73 7.80
+3.07 64.9%
+Final money of this stock :  10998.818562
+Final money of total :  10998.818562
+=====
+=====From===== :  2010-07-01  to  2010-12-31
+HSI Close:  %5eHSI
+23035.449219
+23035.449219
+stock_no     value       buy       close      lowest    highest  
+0806.hk    10998.82       7.63       7.80       1.38       8.75  
+Final Money :  10998.818562
+Profit Money :  998.818562002
+Profit Percent :  0.0999
+0 ['0806.hk', 10998.818562002018, u'7.63', u'7.80', u'1.38', u'8.75']
+0806.hk Date :  2011-01-03
+Close :  7.84
+Date :  2011-06-30
+Close :  6.66
+-0.1505
+7.84 6.66
+-1.18 -15.05%
+Final money of this stock :  9343.49636842
+Final money of total :  9343.49636842
+=====
+=====From===== :  2011-01-01  to  2011-06-30
+HSI Close:  %5eHSI
+error in get_hsi_info
+None
+stock_no     value       buy       close      lowest    highest  
+0806.hk     9343.50       7.63       6.66       1.38       8.75  
+Final Money :  9343.49636842
+Profit Money :  -656.503631579
+Profit Percent :  -0.0657
+0 ['0806.hk', 9343.496368420714, u'7.63', u'6.66', u'1.38', u'8.75']
+0806.hk Date :  2011-07-04
+Close :  6.27
+Date :  2011-12-30
+Close :  3.98
+-0.3652
+6.27 3.98
+-2.29 -36.52%
+Final money of this stock :  5931.25149467
+Final money of total :  5931.25149467
+=====
+=====From===== :  2011-07-01  to  2011-12-30
+HSI Close:  %5eHSI
+18434.390625
+18434.390625
+stock_no     value       buy       close      lowest    highest  
+0806.hk     5931.25       7.63       3.98       1.38       8.75  
+Final Money :  5931.25149467
+Profit Money :  -4068.74850533
+Profit Percent :  -0.4069
+0 ['0806.hk', 5931.25149467347, u'7.63', u'3.98', u'1.38', u'8.75']
+0806.hk Date :  2012-01-02
+Close :  3.98
+Date :  2012-06-29
+Close :  3.73
+-0.0628
+3.98 3.73
+-0.25 -6.28%
+Final money of this stock :  5558.76890081
+Final money of total :  5558.76890081
+=====
+=====From===== :  2012-01-01  to  2012-06-29
+HSI Close:  %5eHSI
+19441.460938
+19441.460938
+stock_no     value       buy       close      lowest    highest  
+0806.hk     5558.77       7.63       3.73       1.38       8.75  
+Final Money :  5558.76890081
+Profit Money :  -4441.23109919
+Profit Percent :  -0.4441
+0 ['0806.hk', 5558.768900807976, u'7.63', u'3.73', u'1.38', u'8.75']
+0806.hk Date :  2012-07-02
+Close :  3.73
+Date :  2013-01-01
+Close :  5.12
+0.3727
+3.73 5.12
+1.39 37.27%
+Final money of this stock :  7630.52207014
+Final money of total :  7630.52207014
+=====
+=====From===== :  2012-07-01  to  2013-01-01
+HSI Close:  %5eHSI
+22656.919922
+22656.919922
+stock_no     value       buy       close      lowest    highest  
+0806.hk     7630.52       7.63       5.12       1.38       8.75  
+Final Money :  7630.52207014
+Profit Money :  -2369.47792986
+Profit Percent :  -0.2369
+0 ['0806.hk', 7630.522070139109, u'7.63', u'5.12', u'1.38', u'8.75']
+0806.hk Date :  2013-01-01
+Close :  5.12
+Date :  2013-07-01
+Close :  4.18
+-0.1836
+5.12 4.18
+-0.94 -18.36%
+Final money of this stock :  6229.55821806
+Final money of total :  6229.55821806
+=====
+=====From===== :  2013-01-01  to  2013-07-01
+HSI Close:  %5eHSI
+20803.289062
+20803.289062
+stock_no     value       buy       close      lowest    highest  
+0806.hk     6229.56       7.63       4.18       1.38       8.75  
+Final Money :  6229.55821806
+Profit Money :  -3770.44178194
+Profit Percent :  -0.377
+0 ['0806.hk', 6229.558218061568, u'7.63', u'4.18', u'1.38', u'8.75']
+0806.hk Date :  2013-07-01
+Close :  4.18
+Date :  2014-01-01
+Close :  6.00
+0.4354
+4.18 6.00
+1.82 43.54%
+Final money of this stock :  8941.90786621
+Final money of total :  8941.90786621
+=====
+=====From===== :  2013-07-01  to  2014-01-01
+HSI Close:  %5eHSI
+23306.390625
+23306.390625
+stock_no     value       buy       close      lowest    highest  
+0806.hk     8941.91       7.63       6.00       1.38       8.75  
+Final Money :  8941.90786621
+Profit Money :  -1058.09213379
+Profit Percent :  -0.1058
+0 ['0806.hk', 8941.907866205574, u'7.63', u'6.00', u'1.38', u'8.75']
+0806.hk Date :  2014-01-01
+Close :  6.00
+Date :  2014-07-01
+Close :  5.19
+-0.135
+6.00 5.19
+-0.81 -13.5%
+Final money of this stock :  7734.75030427
+Final money of total :  7734.75030427
+=====
+=====From===== :  2014-01-01  to  2014-07-01
+HSI Close:  %5eHSI
+23190.720703
+23190.720703
+stock_no     value       buy       close      lowest    highest  
+0806.hk     7734.75       7.63       5.19       1.38       8.75  
+Final Money :  7734.75030427
+Profit Money :  -2265.24969573
+Profit Percent :  -0.2265
+0 ['0806.hk', 7734.750304267822, u'7.63', u'5.19', u'1.38', u'8.75']
+0806.hk Date :  2014-07-01
+Close :  5.19
+Date :  2015-01-01
+Close :  6.52
+0.2563
+5.19 6.52
+1.33 25.63%
+Final money of this stock :  9717.16680725
+Final money of total :  9717.16680725
+=====
+=====From===== :  2014-07-01  to  2015-01-01
+HSI Close:  %5eHSI
+23605.039062
+23605.039062
+stock_no     value       buy       close      lowest    highest  
+0806.hk     9717.17       7.63       6.52       1.38       8.75  
+Final Money :  9717.16680725
+Profit Money :  -282.833192748
+Profit Percent :  -0.0283
+0 ['0806.hk', 9717.166807251664, u'7.63', u'6.52', u'1.38', u'8.75']
+0806.hk Date :  2015-01-01
+Close :  6.52
+Date :  2015-07-01
+Close :  12.24
+0.8773
+6.52 12.24
+5.72 87.73%
+Final money of this stock :  18242.0372473
+Final money of total :  18242.0372473
+=====
+=====From===== :  2015-01-01  to  2015-07-01
+HSI Close:  %5eHSI
+26250.029297
+26250.029297
+stock_no     value       buy       close      lowest    highest  
+0806.hk    18242.04       7.63      12.24       1.38      18.10  
+Final Money :  18242.0372473
+Profit Money :  8242.03724725
+Profit Percent :  0.8242
+0 ['0806.hk', 18242.03724725355, u'7.63', u'12.24', u'1.38', u'18.10']
+0806.hk Date :  2015-07-01
+Close :  12.24
+Date :  2016-01-01
+Close :  9.06
+-0.2598
+12.24 9.06
+-3.18 -25.98%
+Final money of this stock :  13502.7559704
+Final money of total :  13502.7559704
+=====
+=====From===== :  2015-07-01  to  2016-01-01
+HSI Close:  %5eHSI
+21914.400391
+21914.400391
+stock_no     value       buy       close      lowest    highest  
+0806.hk    13502.76       7.63       9.06       1.38      18.10  
+Final Money :  13502.7559704
+Profit Money :  3502.75597042
+Profit Percent :  0.3503
+0 ['0806.hk', 13502.755970417076, u'7.63', u'9.06', u'1.38', u'18.10']
+0806.hk Date :  2016-01-01
+Close :  9.06
+Date :  2016-07-01
+Close :  7.11
+-0.2152
+9.06 7.11
+-1.95 -21.52%
+Final money of this stock :  10596.9628856
+Final money of total :  10596.9628856
+=====
+=====From===== :  2016-01-01  to  2016-07-01
+HSI Close:  %5eHSI
+20794.369141
+20794.369141
+stock_no     value       buy       close      lowest    highest  
+0806.hk    10596.96       7.63       7.11       1.38      18.10  
+Final Money :  10596.9628856
+Profit Money :  596.962885583
+Profit Percent :  0.0597
+0 ['0806.hk', 10596.96288558332, u'7.63', u'7.11', u'1.38', u'18.10']
+0806.hk Date :  2016-07-01
+Close :  7.11
+Date :  2016-12-30
+Close :  6.16
+-0.1336
+7.11 6.16
+-0.95 -13.36%
+Final money of this stock :  9181.20864407
+Final money of total :  9181.20864407
+=====
+=====From===== :  2016-07-01  to  2016-12-30
+HSI Close:  %5eHSI
+22000.560547
+22000.560547
+stock_no     value       buy       close      lowest    highest  
+0806.hk     9181.21       7.63       6.16       1.38      18.10  
+Final Money :  9181.20864407
+Profit Money :  -818.791355931
+Profit Percent :  -0.0819
+0 ['0806.hk', 9181.20864406939, u'7.63', u'6.16', u'1.38', u'18.10']
+0806.hk Date :  2017-01-02
+Close :  6.16
+Date :  2017-04-14
+Close :  7.29
+0.1834
+6.16 7.29
+1.13 18.34%
+Final money of this stock :  10865.0423094
+Final money of total :  10865.0423094
+=====
+=====From===== :  2017-01-01  to  2017-04-14
+HSI Close:  %5eHSI
+24261.660156
+24261.660156
+stock_no     value       buy       close      lowest    highest  
+0806.hk    10865.04       7.63       7.29       1.38      18.10  
+Final Money :  10865.0423094
+Profit Money :  865.042309392
+Profit Percent :  0.0865
+=====From===== :  2007-11-01  to  2017-04-14  version :  0
+Pincipal :   10000.0
+Final Money :  10865.0423094
