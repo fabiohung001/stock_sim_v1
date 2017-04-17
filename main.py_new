@@ -83,7 +83,7 @@ def calc_init_money_total( change_percent , stock_idx , version):
 			stock_list[stock_idx][1] = stock_list[stock_idx][1]  * (1 + change_percent);
 		init_money_total += stock_list[stock_idx][1]
 	
-	if debug : print "Final money of this stock : " , stock_list[stock_idx][1] ;
+	if debug : print "Final money of this stock : " , stock_list[stock_idx][2] ;
 	if debug : print "Final money of total : " , init_money_total;
 
 #get hsi info
@@ -110,7 +110,7 @@ def get_stock_list():
 	print '{: ^10}'.format("lowest") , '{: ^10}'.format("highest");
 	for nCount in reversed( sorted( stock_list , key = lambda x:( x[1]) ) ) :
 		for index , nItem in enumerate(nCount) :
-			if index == 1 :
+			if index == 2 :
 				print '{: <10}'.format('{:8.2f}'.format(nItem)) ,
 			elif index >= 3 :
 				print '{: <10}'.format('{:8.2f}'.format(float(nItem))) ,
