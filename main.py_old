@@ -34,7 +34,6 @@ def print_info ( stock_data , stock_idx , version) :
 					#set buy_in_price
 					if stock_list[stock_idx][3] == 0 :
 						stock_list[stock_idx][3] = day_quote["Close"];
-						stock_list[stock_idx][2] = day_quote["Date"];
 						Price_start = stock_list[stock_idx][3];
 					else :
 						Price_start = stock_list[stock_idx][4];
